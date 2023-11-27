@@ -1,0 +1,4 @@
+.hoverimage:hover + .hovername {
+  display: block;
+  color: white;
+}

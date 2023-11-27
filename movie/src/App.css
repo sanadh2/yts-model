@@ -1,0 +1,12 @@
+body {
+  /* background-color: rgb(2 6 23); */
+  scroll-behavior: smooth;
+  scrollbar-width: 1rem;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+input{
+  outline: 0px;
+}
