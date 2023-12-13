@@ -9,7 +9,6 @@ const { movieRouter } = require("./routes/movie");
 const { showRouter } = require("./routes/show");
 const cors = require("cors");
 const app = express();
-const host = "0.0.0.0/0";
 
 app.use(
   cors({
@@ -34,7 +33,7 @@ app.use((err, req, res, next) => {
 
 const start = async () => {
   await connectDb(process.env.MONGO_URL);
-  app.listen(process.env.PORT, host, () =>
+  app.listen(process.env.PORT, () =>
     console.log(`port is ${process.env.PORT}`)
   );
 };

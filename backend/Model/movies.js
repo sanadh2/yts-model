@@ -5,46 +5,49 @@ const { emit } = require("nodemon");
 const movieShema = new Schema({
   title: {
     type: String,
-    required: true,
   },
-  poster: String,
-  genre: {
-    type: [
-      {
-        type: String,
-        enum: [
-          "Drama",
-          "Crime",
-          "Biography",
-          "History",
-          "Action",
-          "Adventure",
-          "Western",
-          "Romance",
-          "Sci-Fi",
-          "Animation",
-          "Mystery",
-          "Family",
-          "Fantasy",
-          "Thriller",
-          "War",
-          "Horror",
-          "Music",
-          "Comedy",
-          "Film-Noir",
-          "Musical",
-        ],
-        message: "{VALUE} is not a valid genre.",
-      },
-    ],
+  title_english: {
+    type: String,
   },
-  description: String,
-  rating: String,
-  rank: Number,
-  year: Number,
+  title_long: {
+    type: String,
+  },
+
+  year: {
+    type: Number,
+  },
+  rating: { type: Number, required: true },
+  runtime: {
+    type: Number,
+  },
+  genres: {
+    type: Array,
+  },
+  summary: {
+    type: String,
+  },
+  language: {
+    type: String,
+  },
+  background_image: {
+    type: String,
+  },
+  background_image_original: {
+    type: String,
+  },
+  small_cover_image: {
+    type: String,
+  },
+  medium_cover_image: {
+    type: String,
+  },
+  large_cover_image: {
+    type: String,
+  },
   views: {
     type: Number,
     default: 0,
+    required: false,
   },
 });
 
