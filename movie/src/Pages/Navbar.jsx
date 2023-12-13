@@ -11,11 +11,20 @@ import browseSvg from "../svg/browse.svg";
 import searchSvg from "../svg/search.svg";
 import loginSvg from "../svg/login.svg";
 const Navbar = () => {
-  const { movie, setmovie, search, setSearch } = useContext(SearchContext);
+  const { setSearch } = useContext(SearchContext);
   const [searchInput, setSearchInput] = useState(false);
   const navigate = useNavigate();
   const [active, setActive] = useState("home");
   const ref = useRef(null);
+
+  const [currentURL, setCurrentURL] = useState(window.location.href);
+  setInterval(() => {
+    setCurrentURL(window.location.href);
+  }, 400);
+  useEffect(() => {
+    const urls = currentURL.split("/");
+    setActive(urls[3]);
+  }, [currentURL]);
 
   useEffect(() => {
     if (ref.current && searchInput) {
@@ -132,10 +141,7 @@ const Navbar = () => {
           <div className=" lg:text-base lg:items-center gap-4  hidden lg:flex">
             <Link
               to="/"
-              className={`cursor-pointer ${
-                active == "home" ? "underline" : null
-              }`}
-              onClick={() => setActive("home")}
+              className={`cursor-pointer ${active == "" ? "underline" : null}`}
             >
               Home
             </Link>
@@ -146,7 +152,6 @@ const Navbar = () => {
                 className={`cursor-pointer ${
                   active == "trending" ? "underline" : null
                 }`}
-                onClick={() => setActive("trending")}
               >
                 Trending
               </Link>
@@ -155,9 +160,8 @@ const Navbar = () => {
               <Link
                 to="/browse-movies"
                 className={`cursor-pointer ${
-                  active == "browse" ? "underline" : null
+                  active == "browse-movies" ? "underline" : null
                 }`}
-                onClick={() => setActive("browse")}
               >
                 Browse Movies
               </Link>
@@ -170,7 +174,6 @@ const Navbar = () => {
               className={`cursor-pointer ${
                 active == "login" ? "underline" : null
               }`}
-              onClick={() => setActive("login")}
             >
               Login
             </Link>
@@ -181,7 +184,6 @@ const Navbar = () => {
                 className={`cursor-pointer ${
                   active == "signup" ? "underline" : null
                 }`}
-                onClick={() => setActive("signup")}
               >
                 Signup
               </Link>
